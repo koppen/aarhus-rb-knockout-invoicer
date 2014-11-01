@@ -18,12 +18,4 @@
 InvoiceLine = function() {
   this.amount = ko.observable();
   this.price = ko.observable();
-
-  var self = this;
-
-  this.subtotal = ko.computed(function() {
-    if (self.amount() && self.price()) {
-      return self.amount() * self.price();
-    }
-  })
-}
+};

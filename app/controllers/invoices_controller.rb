@@ -13,6 +13,9 @@ class InvoicesController < ApplicationController
   # GET /invoices/new
   def new
     @invoice = Invoice.new
+    5.times do
+      @invoice.invoice_lines << InvoiceLine.new
+    end
   end
 
   # GET /invoices/1/edit
@@ -53,6 +56,15 @@ class InvoicesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def invoice_params
-      params.require(:invoice).permit(:due_date, :total, :recipient)
+      params.require(:invoice).permit(
+        :due_date,
+        :total,
+        :recipient,
+        :invoice_lines_attributes => [
+          :amount,
+          :description,
+          :price
+        ]
+      )
     end
 end

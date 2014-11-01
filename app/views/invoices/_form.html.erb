@@ -1,4 +1,4 @@
-<%= form_for(@invoice, :class => "invoice") do |f| %>
+<%= form_for(@invoice, :class => "invoice") do |invoice_form| %>
   <% if @invoice.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
@@ -12,18 +12,27 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :due_date %><br>
-    <%= f.datetime_select :due_date %>
+    <%= invoice_form.label :due_date %><br>
+    <%= invoice_form.datetime_select :due_date %>
   </div>
   <div class="field">
-    <%= f.label :total %><br>
-    <%= f.text_field :total %>
+    <%= invoice_form.label :recipient %><br>
+    <%= invoice_form.text_area :recipient %>
   </div>
-  <div class="field">
-    <%= f.label :recipient %><br>
-    <%= f.text_field :recipient %>
-  </div>
+
+  <table>
+    <tbody>
+      <%= invoice_form.fields_for :invoice_lines do |invoice_line_form| %>
+        <tr class="invoice-line">
+          <td><%= invoice_line_form.text_field :description, :placeholder => "Description" %></td>
+          <td><%= invoice_line_form.text_field :amount, :placeholder => "Amount" %></td>
+          <td><%= invoice_line_form.text_field :price, :placeholder => "Price" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= invoice_form.submit %>
   </div>
 <% end %>

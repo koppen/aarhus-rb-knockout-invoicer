@@ -15,5 +15,28 @@
   <%= @invoice.recipient %>
 </p>
 
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Amount</th>
+    <th>Price</th>
+    <th>Subtotal</th>
+  </tr>
+  <% @invoice.invoice_lines.each do |invoice_line| %>
+    <tr>
+      <td><%= invoice_line.description %></td>
+      <td><%= invoice_line.amount %></td>
+      <td><%= invoice_line.price %></td>
+      <td><%= invoice_line.subtotal %></td>
+    </tr>
+  <% end %>
+  <tr class="total">
+    <td>Total</td>
+    <td></td>
+    <td></td>
+    <td><%= @invoice.total %></td>
+  </tr>
+</table>
+
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
 <%= link_to 'Back', invoices_path %>

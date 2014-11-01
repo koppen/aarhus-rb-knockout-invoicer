@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101132738) do
+ActiveRecord::Schema.define(version: 20141101133914) do
 
   create_table "invoice_lines", force: true do |t|
     t.string   "description"
@@ -24,5 +24,13 @@ ActiveRecord::Schema.define(version: 20141101132738) do
   end
 
   add_index "invoice_lines", ["invoice_id"], name: "index_invoice_lines_on_invoice_id"
+
+  create_table "invoices", force: true do |t|
+    t.datetime "due_date"
+    t.decimal  "total"
+    t.string   "recipient"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

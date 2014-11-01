@@ -25,8 +25,9 @@
       <%= invoice_form.fields_for :lines do |invoice_line_form| %>
         <tr class="invoice-line">
           <td><%= invoice_line_form.text_field :description, :placeholder => "Description" %></td>
-          <td><%= invoice_line_form.text_field :amount, :placeholder => "Amount" %></td>
-          <td><%= invoice_line_form.text_field :price, :placeholder => "Price" %></td>
+          <td><%= invoice_line_form.text_field :amount, :placeholder => "Amount", :class => "invoice-line-amount" %></td>
+          <td><%= invoice_line_form.text_field :price, :placeholder => "Price", :class => "invoice-line-price" %></td>
+          <td class="invoice-line-subtotal"></td>
         </tr>
       <% end %>
     </tbody>

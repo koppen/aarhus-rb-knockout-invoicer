@@ -13,3 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function() {
+  $('.invoice-line-amount, .invoice-line-price').on('keyup', function(event) {
+    var row = $($(event.target).parents('.invoice-line'));
+    var amount = row.find('.invoice-line-amount').val();
+    var price = row.find('.invoice-line-price').val();
+    if (amount && price) {
+      var subtotal = amount * price;
+      row.find('.invoice-line-subtotal').html(subtotal);
+    };
+  });
+});

@@ -3,3 +3,10 @@
 <%= render 'form' %>
 
 <%= link_to 'Back', invoices_path %>
+
+<%= javascript_tag do %>
+  $(document).ready(function() {
+    invoiceLine = new InvoiceLine();
+    ko.applyBindings(invoiceLine, $('tr')[0])
+  })
+<% end %>

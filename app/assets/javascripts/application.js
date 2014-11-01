@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require knockout
 //= require_tree .
+
+InvoiceLine = function() {
+  this.amount = ko.observable();
+  this.price = ko.observable();
+}

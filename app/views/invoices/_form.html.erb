@@ -21,15 +21,36 @@
   </div>
 
   <table>
-    <tbody>
-      <%= invoice_form.fields_for :lines do |invoice_line_form| %>
-        <tr class="invoice-line">
-          <td><%= invoice_line_form.text_field :description, :placeholder => "Description" %></td>
-          <td><%= invoice_line_form.text_field :amount, :placeholder => "Amount", :data => {:bind => "textInput: amount"} %></td>
-          <td><%= invoice_line_form.text_field :price, :placeholder => "Price", :data => {:bind => "textInput: price"} %></td>
-          <td data-bind="text: subtotal"></td>
-        </tr>
-      <% end %>
+    <tbody data-bind="foreach: lines">
+      <tr class="invoice-line">
+        <td>
+          <input data-bind="
+            attr: {
+              name: 'invoice[lines_attributes][' + $index() + '][description]',
+            }"
+            placeholder="Description"
+          >
+        </td>
+        <td>
+          <input data-bind="
+            textInput: amount,
+            attr: {
+              name: 'invoice[lines_attributes][' + $index() + '][amount]',
+            }"
+            placeholder="Amount"
+          >
+        </td>
+        <td>
+          <input data-bind="
+            textInput: price,
+            attr: {
+              name: 'invoice[lines_attributes][' + $index() + '][price]',
+            }"
+            placeholder="Price"
+          >
+        </td>
+        <td data-bind="text: subtotal"></td>
+      </tr>
     </tbody>
     <tfoot>
       <tr class="total">

@@ -33,6 +33,14 @@ Invoice = function() {
 
   var self = this;
 
+  this.addEmptyLine = function() {
+    self.lines.push(new InvoiceLine);
+  };
+
+  this.removeLine = function(line) {
+    self.lines.remove(line);
+  };
+
   this.total = ko.computed(function() {
     var total = 0;
     self.lines().forEach(function(line) {

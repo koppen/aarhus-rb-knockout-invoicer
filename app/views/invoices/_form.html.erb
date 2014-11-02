@@ -23,6 +23,7 @@
   <table>
     <tbody data-bind="foreach: lines">
       <tr class="invoice-line">
+        <td><a href="#remove" data-bind="click: $parent.removeLine">Remove</a></td>
         <td>
           <input data-bind="
             attr: {
@@ -54,6 +55,7 @@
     </tbody>
     <tfoot>
       <tr class="total">
+        <td><a href="#add" data-bind="click: addEmptyLine">Add</a></td>
         <td></td>
         <td></td>
         <td></td>

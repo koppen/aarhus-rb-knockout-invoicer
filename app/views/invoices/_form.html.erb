@@ -64,6 +64,8 @@
     </tfoot>
   </table>
 
+  <div data-bind="richometer: total"></div>
+
   <div class="actions">
     <%= invoice_form.submit(:data => {:bind => "enable: isCreatable"}) %>
   </div>

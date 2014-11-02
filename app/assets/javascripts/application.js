@@ -59,3 +59,17 @@ Invoice = function() {
     return total;
   });
 };
+
+ko.bindingHandlers.richometer = {
+  init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+    // Noop
+  },
+  update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+    var amount = ko.unwrap(valueAccessor());
+    var result = "";
+    for (i=0; i < amount; i = i + 100) {
+      result = result += "$";
+    };
+    $(element).text(result);
+  }
+}

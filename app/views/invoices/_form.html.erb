@@ -59,12 +59,12 @@
         <td></td>
         <td></td>
         <td></td>
-        <td data-bind="text: total"></td>
+        <td data-bind="text: total, visible: anyLines"></td>
       </tr>
     </tfoot>
   </table>
 
   <div class="actions">
-    <%= invoice_form.submit %>
+    <%= invoice_form.submit(:data => {:bind => "enable: isCreatable"}) %>
   </div>
 <% end %>

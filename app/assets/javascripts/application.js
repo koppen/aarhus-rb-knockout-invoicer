@@ -37,6 +37,14 @@ Invoice = function() {
     self.lines.push(new InvoiceLine);
   };
 
+  this.anyLines = ko.computed(function() {
+    return self.lines().length > 0
+  });
+
+  this.isCreatable = ko.computed(function() {
+    return self.anyLines() && self.total() > 0
+  });
+
   this.removeLine = function(line) {
     self.lines.remove(line);
   };

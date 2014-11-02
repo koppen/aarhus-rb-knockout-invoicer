@@ -13,9 +13,6 @@ class InvoicesController < ApplicationController
   # GET /invoices/new
   def new
     @invoice = Invoice.new
-    5.times do
-      @invoice.lines << InvoiceLine.new
-    end
   end
 
   # GET /invoices/1/edit

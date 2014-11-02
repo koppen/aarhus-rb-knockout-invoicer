@@ -27,3 +27,19 @@ InvoiceLine = function() {
     };
   });
 };
+
+Invoice = function() {
+  this.lines = ko.observableArray();
+
+  var self = this;
+
+  this.total = ko.computed(function() {
+    var total = 0;
+    self.lines().forEach(function(line) {
+      if (line.subtotal()) {
+        total = total + line.subtotal();
+      }
+    });
+    return total;
+  });
+};

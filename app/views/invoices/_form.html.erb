@@ -22,7 +22,7 @@
 
   <table>
     <tbody>
-      <%= invoice_form.fields_for :invoice_lines do |invoice_line_form| %>
+      <%= invoice_form.fields_for :lines do |invoice_line_form| %>
         <tr class="invoice-line">
           <td><%= invoice_line_form.text_field :description, :placeholder => "Description" %></td>
           <td><%= invoice_line_form.text_field :amount, :placeholder => "Amount" %></td>

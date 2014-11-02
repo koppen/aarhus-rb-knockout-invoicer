@@ -1,9 +1,9 @@
 class Invoice < ActiveRecord::Base
-  has_many :invoice_lines
+  has_many :lines, :class_name => InvoiceLine
 
-  accepts_nested_attributes_for :invoice_lines
+  accepts_nested_attributes_for :lines
 
   def total
-    invoice_lines.collect(&:subtotal).compact.sum
+    lines.collect(&:subtotal).compact.sum
   end
 end

@@ -14,7 +14,7 @@ class InvoicesController < ApplicationController
   def new
     @invoice = Invoice.new
     5.times do
-      @invoice.invoice_lines << InvoiceLine.new
+      @invoice.lines << InvoiceLine.new
     end
   end
 
@@ -60,7 +60,7 @@ class InvoicesController < ApplicationController
         :due_date,
         :total,
         :recipient,
-        :invoice_lines_attributes => [
+        :lines_attributes => [
           :amount,
           :description,
           :price

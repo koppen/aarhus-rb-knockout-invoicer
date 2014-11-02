@@ -22,7 +22,7 @@
     <th>Price</th>
     <th>Subtotal</th>
   </tr>
-  <% @invoice.invoice_lines.each do |invoice_line| %>
+  <% @invoice.lines.each do |invoice_line| %>
     <tr>
       <td><%= invoice_line.description %></td>
       <td><%= invoice_line.amount %></td>

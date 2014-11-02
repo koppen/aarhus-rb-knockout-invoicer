@@ -6,7 +6,9 @@
 
 <%= javascript_tag do %>
   $(document).ready(function() {
-    invoiceLine = new InvoiceLine();
-    ko.applyBindings(invoiceLine, $('tr')[0])
+    $('.invoice-line').each(function(index, node) {
+      invoiceLine = new InvoiceLine();
+      ko.applyBindings(invoiceLine, node);
+    })
   })
 <% end %>

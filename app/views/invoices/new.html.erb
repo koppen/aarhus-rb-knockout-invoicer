@@ -6,7 +6,13 @@
 
 <%= javascript_tag do %>
   $(document).ready(function() {
-    invoiceLine = new InvoiceLine();
-    ko.applyBindings(invoiceLine, $('tr')[0]);
+    invoice = new Invoice;
+    ko.applyBindings(invoice, $('.total')[0]);
+
+    $('.invoice-line').each(function(index, node) {
+      invoiceLine = new InvoiceLine();
+      invoice.lines.push(invoiceLine);
+      ko.applyBindings(invoiceLine, node);
+    });
   })
 <% end %>
